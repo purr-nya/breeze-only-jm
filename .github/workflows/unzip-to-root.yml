@@ -8,7 +8,7 @@ on:
 
 permissions:
   contents: write   # 允许读写普通文件
-  workflows: write  # 允许创建、修改或删除工作流文件（解决报错的关键！）
+  actions: write  # 允许创建、修改或删除工作流文件（解决报错的关键！）
 
 jobs:
   unzip-and-push:
