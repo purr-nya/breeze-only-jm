@@ -7,23 +7,22 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # 允许读写普通文件
-  actions: write  # 允许创建、修改或删除工作流文件（解决报错的关键！）
+  contents: write
 
 jobs:
   unzip-and-push:
     runs-on: ubuntu-latest
 
     steps:
+      # 在这里通过 token 参数传入你的 PAT，接下来的所有 git 提交就拥有修改 workflow 的特权了
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
+        with:
+          token: ${{ secrets::MY_WORKFLOW_TOKEN }}
 
-      # Step 2: 清理根目录（排除指定的保留项）
       - name: Clean repository root
         run: |
           echo "=== 开始清理根目录 ==="
-          # 使用 find 寻找根目录下的所有一级文件和文件夹
-          # 排除 .git, .github, readme* (不区分大小写), 以及所有的 .zip 文件
           find . -maxdepth 1 ! -name "." \
                            ! -name ".git" \
                            ! -name ".github" \
@@ -33,7 +32,6 @@ jobs:
           echo "清理完成，当前保留的文件/目录："
           ls -A
 
-      # Step 3: 寻找并解压 zip 文件
       - name: Unzip file to root
         run: |
           echo "=== 开始寻找并解压 ZIP ==="
@@ -47,46 +45,33 @@ jobs:
             exit 1
           fi
 
-      # Step 4: 检测并剥离单一外壳文件夹（Flatten）并解决 .github 合并冲突
       - name: Flatten single subdirectory
         run: |
           echo "=== 开始检查解压目录结构 ==="
-          # 获取当前根目录下，除去 .git, .github 和 .zip 之外的所有一级项目
           ITEMS=$(find . -maxdepth 1 ! -name "." ! -name ".git" ! -name ".github" ! -name "*.zip" -print)
-          
-          # 计算剩余项目的总数
           ITEM_COUNT=$(echo "$ITEMS" | sed '/^$/d' | wc -l)
           
-          # 如果正好只剩下一个项目，且这个项目是一个文件夹
           if [ "$ITEM_COUNT" -eq 1 ] && [ -d "$ITEMS" ]; then
             SUB_DIR="$ITEMS"
             echo "检测到解压后只有一个文件夹: $SUB_DIR"
             
-            # --- 新增安全处理：检查子文件夹里是否也包含 .github ---
             if [ -d "$SUB_DIR/.github" ]; then
               echo "警告：子文件夹中包含 .github 目录，开始执行合并与覆盖..."
-              # 强行将子 .github 内的所有内容复制/覆盖到根目录的 .github 中
               cp -rf "$SUB_DIR/.github/"* .github/
-              # 删除子文件夹中的 .github，防止接下来的 mv 产生冲突
               rm -rf "$SUB_DIR/.github"
             fi
-            # ----------------------------------------------------
 
             echo "开始将该文件夹内的所有剩余内容移到根目录..."
-            # 使用 shopt 确保包括隐藏文件（.*）也能被正确移动
             shopt -s dotglob
             mv "$SUB_DIR"/* .
             shopt -u dotglob
             
-            # 移除已经变为空壳的文件夹
             rmdir "$SUB_DIR"
             echo "扁平化移动完成，已删除空壳文件夹。"
           else
-            echo "无需扁平化处理：当前剩余项目数量为 $ITEM_COUNT，或目标不是文件夹。"
+            echo "无需扁平化处理。"
           fi
-          
 
-      # Step 5: 提交并推送变化到 GitHub
       - name: Commit and Push changes
         run: |
           echo "=== 开始提交代码 ==="
