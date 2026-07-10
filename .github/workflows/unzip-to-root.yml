@@ -46,7 +46,7 @@ jobs:
             exit 1
           fi
 
-      # Step 4: 检测并剥离单一外壳文件夹（Flatten）
+      # Step 4: 检测并剥离单一外壳文件夹（Flatten）并解决 .github 合并冲突
       - name: Flatten single subdirectory
         run: |
           echo "=== 开始检查解压目录结构 ==="
@@ -60,10 +60,19 @@ jobs:
           if [ "$ITEM_COUNT" -eq 1 ] && [ -d "$ITEMS" ]; then
             SUB_DIR="$ITEMS"
             echo "检测到解压后只有一个文件夹: $SUB_DIR"
-            echo "开始将该文件夹内的所有内容移到根目录..."
             
+            # --- 新增安全处理：检查子文件夹里是否也包含 .github ---
+            if [ -d "$SUB_DIR/.github" ]; then
+              echo "警告：子文件夹中包含 .github 目录，开始执行合并与覆盖..."
+              # 强行将子 .github 内的所有内容复制/覆盖到根目录的 .github 中
+              cp -rf "$SUB_DIR/.github/"* .github/
+              # 删除子文件夹中的 .github，防止接下来的 mv 产生冲突
+              rm -rf "$SUB_DIR/.github"
+            fi
+            # ----------------------------------------------------
+
+            echo "开始将该文件夹内的所有剩余内容移到根目录..."
             # 使用 shopt 确保包括隐藏文件（.*）也能被正确移动
-            # 但要排除 . 和 .. 目录
             shopt -s dotglob
             mv "$SUB_DIR"/* .
             shopt -u dotglob
@@ -74,6 +83,7 @@ jobs:
           else
             echo "无需扁平化处理：当前剩余项目数量为 $ITEM_COUNT，或目标不是文件夹。"
           fi
+          
 
       # Step 5: 提交并推送变化到 GitHub
       - name: Commit and Push changes
