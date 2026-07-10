@@ -1,0 +1,91 @@
+name: Clean, Unzip and Flatten to Root
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unzip-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      # Step 2: 清理根目录（排除指定的保留项）
+      - name: Clean repository root
+        run: |
+          echo "=== 开始清理根目录 ==="
+          # 使用 find 寻找根目录下的所有一级文件和文件夹
+          # 排除 .git, .github, readme* (不区分大小写), 以及所有的 .zip 文件
+          find . -maxdepth 1 ! -name "." \
+                           ! -name ".git" \
+                           ! -name ".github" \
+                           ! -iname "readme*" \
+                           ! -name "*.zip" \
+                           -exec rm -rf {} +
+          echo "清理完成，当前保留的文件/目录："
+          ls -A
+
+      # Step 3: 寻找并解压 zip 文件
+      - name: Unzip file to root
+        run: |
+          echo "=== 开始寻找并解压 ZIP ==="
+          ZIP_FILE=$(find . -maxdepth 1 -name "*.zip" -print -quit)
+          
+          if [ -n "$ZIP_FILE" ]; then
+            echo "找到压缩包: $ZIP_FILE ，开始解压..."
+            unzip -o "$ZIP_FILE" -d .
+          else
+            echo "错误：在根目录下没有找到任何 .zip 文件！"
+            exit 1
+          fi
+
+      # Step 4: 检测并剥离单一外壳文件夹（Flatten）
+      - name: Flatten single subdirectory
+        run: |
+          echo "=== 开始检查解压目录结构 ==="
+          # 获取当前根目录下，除去 .git, .github 和 .zip 之外的所有一级项目
+          ITEMS=$(find . -maxdepth 1 ! -name "." ! -name ".git" ! -name ".github" ! -name "*.zip" -print)
+          
+          # 计算剩余项目的总数
+          ITEM_COUNT=$(echo "$ITEMS" | sed '/^$/d' | wc -l)
+          
+          # 如果正好只剩下一个项目，且这个项目是一个文件夹
+          if [ "$ITEM_COUNT" -eq 1 ] && [ -d "$ITEMS" ]; then
+            SUB_DIR="$ITEMS"
+            echo "检测到解压后只有一个文件夹: $SUB_DIR"
+            echo "开始将该文件夹内的所有内容移到根目录..."
+            
+            # 使用 shopt 确保包括隐藏文件（.*）也能被正确移动
+            # 但要排除 . 和 .. 目录
+            shopt -s dotglob
+            mv "$SUB_DIR"/* .
+            shopt -u dotglob
+            
+            # 移除已经变为空壳的文件夹
+            rmdir "$SUB_DIR"
+            echo "扁平化移动完成，已删除空壳文件夹。"
+          else
+            echo "无需扁平化处理：当前剩余项目数量为 $ITEM_COUNT，或目标不是文件夹。"
+          fi
+
+      # Step 5: 提交并推送变化到 GitHub
+      - name: Commit and Push changes
+        run: |
+          echo "=== 开始提交代码 ==="
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add .
+          if git diff --staged --quiet; then
+            echo "没有检测到任何文件变化，跳过提交。"
+          else
+            git commit -m "chore: clean, auto-unzip and flatten repository [skip ci]"
+            git push
+          fi
