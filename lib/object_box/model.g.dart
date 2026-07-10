@@ -1,0 +1,465 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+BikaComicHistory _$BikaComicHistoryFromJson(Map<String, dynamic> json) =>
+    BikaComicHistory(
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      comicId: json['comicId'] as String,
+      creatorId: json['creatorId'] as String,
+      creatorGender: json['creatorGender'] as String,
+      creatorName: json['creatorName'] as String,
+      creatorVerified: json['creatorVerified'] as bool,
+      creatorExp: (json['creatorExp'] as num).toInt(),
+      creatorLevel: (json['creatorLevel'] as num).toInt(),
+      creatorCharacters: (json['creatorCharacters'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      creatorCharactersString: json['creatorCharactersString'] as String,
+      creatorRole: json['creatorRole'] as String,
+      creatorTitle: json['creatorTitle'] as String,
+      creatorAvatarOriginalName: json['creatorAvatarOriginalName'] as String,
+      creatorAvatarPath: json['creatorAvatarPath'] as String,
+      creatorAvatarFileServer: json['creatorAvatarFileServer'] as String,
+      creatorSlogan: json['creatorSlogan'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      thumbOriginalName: json['thumbOriginalName'] as String,
+      thumbPath: json['thumbPath'] as String,
+      thumbFileServer: json['thumbFileServer'] as String,
+      author: json['author'] as String,
+      chineseTeam: json['chineseTeam'] as String,
+      categories: (json['categories'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      categoriesString: json['categoriesString'] as String,
+      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+      tagsString: json['tagsString'] as String,
+      pagesCount: (json['pagesCount'] as num).toInt(),
+      epsCount: (json['epsCount'] as num).toInt(),
+      finished: json['finished'] as bool,
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      allowDownload: json['allowDownload'] as bool,
+      allowComment: json['allowComment'] as bool,
+      totalLikes: (json['totalLikes'] as num).toInt(),
+      totalViews: (json['totalViews'] as num).toInt(),
+      totalComments: (json['totalComments'] as num).toInt(),
+      viewsCount: (json['viewsCount'] as num).toInt(),
+      likesCount: (json['likesCount'] as num).toInt(),
+      commentsCount: (json['commentsCount'] as num).toInt(),
+      isFavourite: json['isFavourite'] as bool,
+      isLiked: json['isLiked'] as bool,
+      history: DateTime.parse(json['history'] as String),
+      order: (json['order'] as num).toInt(),
+      epTitle: json['epTitle'] as String,
+      epPageCount: (json['epPageCount'] as num).toInt(),
+      epId: json['epId'] as String,
+      deleted: json['deleted'] as bool,
+    );
+
+Map<String, dynamic> _$BikaComicHistoryToJson(BikaComicHistory instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'comicId': instance.comicId,
+      'creatorId': instance.creatorId,
+      'creatorGender': instance.creatorGender,
+      'creatorName': instance.creatorName,
+      'creatorVerified': instance.creatorVerified,
+      'creatorExp': instance.creatorExp,
+      'creatorLevel': instance.creatorLevel,
+      'creatorCharacters': instance.creatorCharacters,
+      'creatorCharactersString': instance.creatorCharactersString,
+      'creatorRole': instance.creatorRole,
+      'creatorTitle': instance.creatorTitle,
+      'creatorAvatarOriginalName': instance.creatorAvatarOriginalName,
+      'creatorAvatarPath': instance.creatorAvatarPath,
+      'creatorAvatarFileServer': instance.creatorAvatarFileServer,
+      'creatorSlogan': instance.creatorSlogan,
+      'title': instance.title,
+      'description': instance.description,
+      'thumbOriginalName': instance.thumbOriginalName,
+      'thumbPath': instance.thumbPath,
+      'thumbFileServer': instance.thumbFileServer,
+      'author': instance.author,
+      'chineseTeam': instance.chineseTeam,
+      'categories': instance.categories,
+      'categoriesString': instance.categoriesString,
+      'tags': instance.tags,
+      'tagsString': instance.tagsString,
+      'pagesCount': instance.pagesCount,
+      'epsCount': instance.epsCount,
+      'finished': instance.finished,
+      'updatedAt': instance.updatedAt.toIso8601String(),
+      'createdAt': instance.createdAt.toIso8601String(),
+      'allowDownload': instance.allowDownload,
+      'allowComment': instance.allowComment,
+      'totalLikes': instance.totalLikes,
+      'totalViews': instance.totalViews,
+      'totalComments': instance.totalComments,
+      'viewsCount': instance.viewsCount,
+      'likesCount': instance.likesCount,
+      'commentsCount': instance.commentsCount,
+      'isFavourite': instance.isFavourite,
+      'isLiked': instance.isLiked,
+      'history': instance.history.toIso8601String(),
+      'order': instance.order,
+      'epTitle': instance.epTitle,
+      'epPageCount': instance.epPageCount,
+      'epId': instance.epId,
+      'deleted': instance.deleted,
+    };
+
+BikaComicDownload _$BikaComicDownloadFromJson(Map<String, dynamic> json) =>
+    BikaComicDownload(
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      comicId: json['comicId'] as String,
+      creatorId: json['creatorId'] as String,
+      creatorGender: json['creatorGender'] as String,
+      creatorName: json['creatorName'] as String,
+      creatorVerified: json['creatorVerified'] as bool,
+      creatorExp: (json['creatorExp'] as num).toInt(),
+      creatorLevel: (json['creatorLevel'] as num).toInt(),
+      creatorCharacters: (json['creatorCharacters'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      creatorCharactersString: json['creatorCharactersString'] as String,
+      creatorRole: json['creatorRole'] as String,
+      creatorTitle: json['creatorTitle'] as String,
+      creatorAvatarOriginalName: json['creatorAvatarOriginalName'] as String,
+      creatorAvatarPath: json['creatorAvatarPath'] as String,
+      creatorAvatarFileServer: json['creatorAvatarFileServer'] as String,
+      creatorSlogan: json['creatorSlogan'] as String,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      thumbOriginalName: json['thumbOriginalName'] as String,
+      thumbPath: json['thumbPath'] as String,
+      thumbFileServer: json['thumbFileServer'] as String,
+      author: json['author'] as String,
+      chineseTeam: json['chineseTeam'] as String,
+      categories: (json['categories'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      categoriesString: json['categoriesString'] as String,
+      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+      tagsString: json['tagsString'] as String,
+      pagesCount: (json['pagesCount'] as num).toInt(),
+      epsCount: (json['epsCount'] as num).toInt(),
+      finished: json['finished'] as bool,
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      allowDownload: json['allowDownload'] as bool,
+      allowComment: json['allowComment'] as bool,
+      totalLikes: (json['totalLikes'] as num).toInt(),
+      totalViews: (json['totalViews'] as num).toInt(),
+      totalComments: (json['totalComments'] as num).toInt(),
+      viewsCount: (json['viewsCount'] as num).toInt(),
+      likesCount: (json['likesCount'] as num).toInt(),
+      commentsCount: (json['commentsCount'] as num).toInt(),
+      isFavourite: json['isFavourite'] as bool,
+      isLiked: json['isLiked'] as bool,
+      downloadTime: DateTime.parse(json['downloadTime'] as String),
+      epsTitle: (json['epsTitle'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      comicInfoAll: json['comicInfoAll'] as String,
+    );
+
+Map<String, dynamic> _$BikaComicDownloadToJson(BikaComicDownload instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'comicId': instance.comicId,
+      'creatorId': instance.creatorId,
+      'creatorGender': instance.creatorGender,
+      'creatorName': instance.creatorName,
+      'creatorVerified': instance.creatorVerified,
+      'creatorExp': instance.creatorExp,
+      'creatorLevel': instance.creatorLevel,
+      'creatorCharacters': instance.creatorCharacters,
+      'creatorCharactersString': instance.creatorCharactersString,
+      'creatorRole': instance.creatorRole,
+      'creatorTitle': instance.creatorTitle,
+      'creatorAvatarOriginalName': instance.creatorAvatarOriginalName,
+      'creatorAvatarPath': instance.creatorAvatarPath,
+      'creatorAvatarFileServer': instance.creatorAvatarFileServer,
+      'creatorSlogan': instance.creatorSlogan,
+      'title': instance.title,
+      'description': instance.description,
+      'thumbOriginalName': instance.thumbOriginalName,
+      'thumbPath': instance.thumbPath,
+      'thumbFileServer': instance.thumbFileServer,
+      'author': instance.author,
+      'chineseTeam': instance.chineseTeam,
+      'categories': instance.categories,
+      'categoriesString': instance.categoriesString,
+      'tags': instance.tags,
+      'tagsString': instance.tagsString,
+      'pagesCount': instance.pagesCount,
+      'epsCount': instance.epsCount,
+      'finished': instance.finished,
+      'updatedAt': instance.updatedAt.toIso8601String(),
+      'createdAt': instance.createdAt.toIso8601String(),
+      'allowDownload': instance.allowDownload,
+      'allowComment': instance.allowComment,
+      'totalLikes': instance.totalLikes,
+      'totalViews': instance.totalViews,
+      'totalComments': instance.totalComments,
+      'viewsCount': instance.viewsCount,
+      'likesCount': instance.likesCount,
+      'commentsCount': instance.commentsCount,
+      'isFavourite': instance.isFavourite,
+      'isLiked': instance.isLiked,
+      'downloadTime': instance.downloadTime.toIso8601String(),
+      'epsTitle': instance.epsTitle,
+      'comicInfoAll': instance.comicInfoAll,
+    };
+
+JmFavorite _$JmFavoriteFromJson(Map<String, dynamic> json) => JmFavorite(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  comicId: json['comicId'] as String,
+  name: json['name'] as String,
+  addtime: json['addtime'] as String,
+  description: json['description'] as String,
+  totalViews: json['totalViews'] as String,
+  likes: json['likes'] as String,
+  seriesId: json['seriesId'] as String,
+  commentTotal: json['commentTotal'] as String,
+  author: (json['author'] as List<dynamic>).map((e) => e as String).toList(),
+  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+  works: (json['works'] as List<dynamic>).map((e) => e as String).toList(),
+  actors: (json['actors'] as List<dynamic>).map((e) => e as String).toList(),
+  liked: json['liked'] as bool,
+  isFavorite: json['isFavorite'] as bool,
+  isAids: json['isAids'] as bool,
+  price: json['price'] as String,
+  purchased: json['purchased'] as String,
+  deleted: json['deleted'] as bool,
+  history: DateTime.parse(json['history'] as String),
+);
+
+Map<String, dynamic> _$JmFavoriteToJson(JmFavorite instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'comicId': instance.comicId,
+      'name': instance.name,
+      'addtime': instance.addtime,
+      'description': instance.description,
+      'totalViews': instance.totalViews,
+      'likes': instance.likes,
+      'seriesId': instance.seriesId,
+      'commentTotal': instance.commentTotal,
+      'author': instance.author,
+      'tags': instance.tags,
+      'works': instance.works,
+      'actors': instance.actors,
+      'liked': instance.liked,
+      'isFavorite': instance.isFavorite,
+      'isAids': instance.isAids,
+      'price': instance.price,
+      'purchased': instance.purchased,
+      'deleted': instance.deleted,
+      'history': instance.history.toIso8601String(),
+    };
+
+JmHistory _$JmHistoryFromJson(Map<String, dynamic> json) => JmHistory(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  comicId: json['comicId'] as String,
+  name: json['name'] as String,
+  addtime: json['addtime'] as String,
+  description: json['description'] as String,
+  totalViews: json['totalViews'] as String,
+  likes: json['likes'] as String,
+  seriesId: json['seriesId'] as String,
+  commentTotal: json['commentTotal'] as String,
+  author: (json['author'] as List<dynamic>).map((e) => e as String).toList(),
+  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+  works: (json['works'] as List<dynamic>).map((e) => e as String).toList(),
+  actors: (json['actors'] as List<dynamic>).map((e) => e as String).toList(),
+  liked: json['liked'] as bool,
+  isFavorite: json['isFavorite'] as bool,
+  isAids: json['isAids'] as bool,
+  price: json['price'] as String,
+  purchased: json['purchased'] as String,
+  order: (json['order'] as num).toInt(),
+  epTitle: json['epTitle'] as String,
+  epPageCount: (json['epPageCount'] as num).toInt(),
+  epId: json['epId'] as String,
+  deleted: json['deleted'] as bool,
+  history: DateTime.parse(json['history'] as String),
+);
+
+Map<String, dynamic> _$JmHistoryToJson(JmHistory instance) => <String, dynamic>{
+  'id': instance.id,
+  'comicId': instance.comicId,
+  'name': instance.name,
+  'addtime': instance.addtime,
+  'description': instance.description,
+  'totalViews': instance.totalViews,
+  'likes': instance.likes,
+  'seriesId': instance.seriesId,
+  'commentTotal': instance.commentTotal,
+  'author': instance.author,
+  'tags': instance.tags,
+  'works': instance.works,
+  'actors': instance.actors,
+  'liked': instance.liked,
+  'isFavorite': instance.isFavorite,
+  'isAids': instance.isAids,
+  'price': instance.price,
+  'purchased': instance.purchased,
+  'order': instance.order,
+  'epTitle': instance.epTitle,
+  'epPageCount': instance.epPageCount,
+  'epId': instance.epId,
+  'deleted': instance.deleted,
+  'history': instance.history.toIso8601String(),
+};
+
+JmDownload _$JmDownloadFromJson(Map<String, dynamic> json) => JmDownload(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  comicId: json['comicId'] as String,
+  name: json['name'] as String,
+  addtime: json['addtime'] as String,
+  description: json['description'] as String,
+  totalViews: json['totalViews'] as String,
+  likes: json['likes'] as String,
+  seriesId: json['seriesId'] as String,
+  commentTotal: json['commentTotal'] as String,
+  author: (json['author'] as List<dynamic>).map((e) => e as String).toList(),
+  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+  works: (json['works'] as List<dynamic>).map((e) => e as String).toList(),
+  actors: (json['actors'] as List<dynamic>).map((e) => e as String).toList(),
+  liked: json['liked'] as bool,
+  isFavorite: json['isFavorite'] as bool,
+  isAids: json['isAids'] as bool,
+  price: json['price'] as String,
+  purchased: json['purchased'] as String,
+  epsIds: (json['epsIds'] as List<dynamic>).map((e) => e as String).toList(),
+  allInfo: json['allInfo'] as String,
+  downloadTime: DateTime.parse(json['downloadTime'] as String),
+);
+
+Map<String, dynamic> _$JmDownloadToJson(JmDownload instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'comicId': instance.comicId,
+      'name': instance.name,
+      'addtime': instance.addtime,
+      'description': instance.description,
+      'totalViews': instance.totalViews,
+      'likes': instance.likes,
+      'seriesId': instance.seriesId,
+      'commentTotal': instance.commentTotal,
+      'author': instance.author,
+      'tags': instance.tags,
+      'works': instance.works,
+      'actors': instance.actors,
+      'liked': instance.liked,
+      'isFavorite': instance.isFavorite,
+      'isAids': instance.isAids,
+      'price': instance.price,
+      'purchased': instance.purchased,
+      'epsIds': instance.epsIds,
+      'allInfo': instance.allInfo,
+      'downloadTime': instance.downloadTime.toIso8601String(),
+    };
+
+UserSetting _$UserSettingFromJson(Map<String, dynamic> json) =>
+    UserSetting(
+        id: (json['id'] as num?)?.toInt() ?? 0,
+        globalSettingData: json['globalSettingData'] as String?,
+        bikaSettingData: json['bikaSettingData'] as String?,
+        jmSettingData: json['jmSettingData'] as String?,
+        jmJwt: json['jmJwt'] as String? ?? '',
+      )
+      ..globalSetting = GlobalSettingState.fromJson(
+        json['globalSetting'] as Map<String, dynamic>,
+      )
+      ..bikaSetting = BikaSettingState.fromJson(
+        json['bikaSetting'] as Map<String, dynamic>,
+      )
+      ..jmSetting = JmSettingState.fromJson(
+        json['jmSetting'] as Map<String, dynamic>,
+      );
+
+Map<String, dynamic> _$UserSettingToJson(UserSetting instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'globalSettingData': instance.globalSettingData,
+      'bikaSettingData': instance.bikaSettingData,
+      'jmSettingData': instance.jmSettingData,
+      'jmJwt': instance.jmJwt,
+      'globalSetting': instance.globalSetting,
+      'bikaSetting': instance.bikaSetting,
+      'jmSetting': instance.jmSetting,
+    };
+
+DownloadTask _$DownloadTaskFromJson(Map<String, dynamic> json) => DownloadTask()
+  ..id = (json['id'] as num).toInt()
+  ..comicId = json['comicId'] as String
+  ..comicName = json['comicName'] as String
+  ..isCompleted = json['isCompleted'] as bool
+  ..isDownloading = json['isDownloading'] as bool
+  ..status = json['status'] as String
+  ..dbTaskInfo = json['dbTaskInfo'] as Map<String, dynamic>?
+  ..taskInfo = json['taskInfo'] == null
+      ? null
+      : DownloadTaskJson.fromJson(json['taskInfo'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$DownloadTaskToJson(DownloadTask instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'comicId': instance.comicId,
+      'comicName': instance.comicName,
+      'isCompleted': instance.isCompleted,
+      'isDownloading': instance.isDownloading,
+      'status': instance.status,
+      'dbTaskInfo': instance.dbTaskInfo,
+      'taskInfo': instance.taskInfo,
+    };
+
+PluginConfig _$PluginConfigFromJson(Map<String, dynamic> json) => PluginConfig(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  name: json['name'] as String,
+  data: json['data'] as Map<String, dynamic>?,
+);
+
+Map<String, dynamic> _$PluginConfigToJson(PluginConfig instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'data': instance.data,
+    };
+
+PluginInfo _$PluginInfoFromJson(Map<String, dynamic> json) => PluginInfo(
+  id: (json['id'] as num?)?.toInt() ?? 0,
+  pluginId: json['pluginId'] as String,
+  name: json['name'] as String,
+  jsCode: json['jsCode'] as String,
+  version: json['version'] as String,
+  description: json['description'] as String,
+  allInfo: json['allInfo'] as Map<String, dynamic>?,
+  insertedAt: DateTime.parse(json['insertedAt'] as String),
+  updatedAt: DateTime.parse(json['updatedAt'] as String),
+  isEnabled: json['isEnabled'] as bool,
+  isDeleted: json['isDeleted'] as bool,
+);
+
+Map<String, dynamic> _$PluginInfoToJson(PluginInfo instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'pluginId': instance.pluginId,
+      'name': instance.name,
+      'jsCode': instance.jsCode,
+      'version': instance.version,
+      'description': instance.description,
+      'allInfo': instance.allInfo,
+      'insertedAt': instance.insertedAt.toIso8601String(),
+      'updatedAt': instance.updatedAt.toIso8601String(),
+      'isEnabled': instance.isEnabled,
+      'isDeleted': instance.isDeleted,
+    };
