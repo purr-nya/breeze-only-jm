@@ -14,11 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 在这里通过 token 参数传入你的 PAT，接下来的所有 git 提交就拥有修改 workflow 的特权了
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
         with:
-          token: ${{ secrets::MY_WORKFLOW_TOKEN }}
+          token: ${{ secrets.MY_WORKFLOW_TOKEN }}
 
       - name: Clean repository root
         run: |
